@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Serviço</title>
+</head>
+<body>
+    <h1>Lista de Serviços Disponíveis</h1>
+    
+    {% if servicos %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Username do Prestador</th>
+                    <th>CNPJ</th>
+                    <th>Nome do Serviço</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for servico in servicos %}
+                <tr>
+                    <td>{{ servico.username }}</td>
+                    <td>{{ servico.cnpj }}</td>
+                    <td>{{ servico.nome_servico }}</td>
+                    <td>
+                        <a href="{% url 'confirmar_agendamento' servico.username servico.cnpj servico.nome_servico %}">
+                            <button>Agendar</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum serviço disponível no momento.</p>
+    {% endif %}
+</body>
+</html>

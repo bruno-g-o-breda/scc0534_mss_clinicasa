@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Agendamento</title>
+</head>
+<body>
+    <h1>Confirmar Agendamento</h1>
+    <form method="POST" action="{% url 'salvar_agendamento' %}">
+        {% csrf_token %}
+        <p><strong>Paciente:</strong> {{ paciente.username }} - CPF: {{ paciente.cpf }}</p>
+        <p><strong>Prestador:</strong> {{ servico.username }}</p>
+        <p><strong>CNPJ:</strong> {{ servico.cnpj }}</p>
+        <p><strong>Serviço:</strong> {{ servico.nome_servico }}</p>
+        <p><strong>Data de Agendamento:</strong> {{ data_agendamento }}</p>
+        
+        <!-- Campos ocultos para passar os dados -->
+        <input type="hidden" name="username_paciente" value="{{ paciente.username }}">
+        <input type="hidden" name="cpf" value="{{ paciente.cpf }}">
+        <input type="hidden" name="username_prestador" value="{{ servico.username }}">
+        <input type="hidden" name="cnpj" value="{{ servico.cnpj }}">
+        <input type="hidden" name="nome_servico" value="{{ servico.nome_servico }}">
+        <input type="hidden" name="data_agendamento" value="{{ data_agendamento|date:'Y-m-d' }}">
+
+    
+        <button type="submit">Confirmar Agendamento</button>
+    </form>
+</body>
+</html>
