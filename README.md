@@ -1,4 +1,5 @@
 Desenvolvido no contexto de projeto da disciplina Modelagem de Sistemas de Software (SCC0534)
+
 Autores:
 Bruno Garcia de Oliveira Breda Nº USP 11212702
 Felipe Oliveira Carvalho  Nº USP 14613879
